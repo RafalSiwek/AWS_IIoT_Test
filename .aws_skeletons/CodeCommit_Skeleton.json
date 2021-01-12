@@ -1,0 +1,7 @@
+{
+    "repositoryName": "rs-aws-lambda-test",
+    "repositoryDescription": "Testing the lambda fatures with CI/CD standard",
+    "tags": {
+        "KeyName": "rs"
+    }
+}
