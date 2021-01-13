@@ -10,9 +10,7 @@ phases:
 #      - python3.6 -m venv test_venv
 #      - . test_venv/bin/activate
       - pip install --upgrade pip
-      - pip install .
-      - pip install -r requirements.txt
-      - rm -rf dspt
+      - pip install -r requirements.txtx
   build:
     commands:
       - echo "Building"
