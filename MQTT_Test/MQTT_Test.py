@@ -1,3 +1,3 @@
 import paho.mqtt.client as mqtt
 
-print(f'hello')
+print(f'bye')
