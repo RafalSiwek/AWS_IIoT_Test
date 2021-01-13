@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 .vscode/
-.aws_skeletons/
+.awsskeletons/
 
 # C extensions
 *.so
