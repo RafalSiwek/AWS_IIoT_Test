@@ -11,10 +11,13 @@ phases:
       - pip install -r requirements.txt
   build:
     commands:
-      - echo "Building"
+      - echo "Testing..."
+      - python -m pytest test/test_code.py --junitxml=test_report/test_code.xml
+
   post_build:
     commands:
       - echo Build completed on `date`
+      
 
 artifacts:
   files:
