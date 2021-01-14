@@ -1,18 +1,12 @@
 import json
-from typing import Any, Dict, List
-from pydantic import BaseModel
+from .eventmodels import S3Model, S3ModelEventBridge
 
-from aws_lambda_powertools.utilities.parser import event_parser, parse, BaseModel, envelopes
+from aws_lambda_powertools.utilities.parser import event_parser
 from aws_lambda_powertools.utilities.typing import LambdaContext
 
 
-class S3Nodel(BaseModel):
-    Records : list
-
-
-
-@event_parser(model=S3Nodel)
-def lambda_handler(event: S3Nodel, context: LambdaContext) -> None:
+@event_parser(model=S3Model)
+def lambda_handler(event: S3Model, context: LambdaContext) -> None:
     print("Hello Lambda")
     return {
         'statusCode': 200,
