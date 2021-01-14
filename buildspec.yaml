@@ -14,6 +14,7 @@ phases:
 #      - . test_venv/bin/activate
       - pip install --upgrade pip
       - pip install -r requirements.txt
+      - pip install junit-xml
   build:
     commands:
       - echo "Testing..."
