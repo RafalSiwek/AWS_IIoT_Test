@@ -7,7 +7,8 @@ from aws_lambda_powertools.utilities.typing import LambdaContext
 
 
 class S3Nodel(BaseModel):
-    Records : str
+    Records : list
+
 
 
 @event_parser(model=S3Nodel)
