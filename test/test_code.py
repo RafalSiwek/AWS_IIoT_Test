@@ -44,16 +44,11 @@ event1 = {
 event2= 100
 event3={'body': json.dumps('Hello from Lambda!'),}
 
-@pytest.mark.parametrize("input,expected",[(event1,200)])
+@pytest.mark.parametrize("input,expected",[(event1,200),(event2,400),(event3,400)])
 def test_lambda_handler_invoke(input,expected):
     
     lInvoke = lambdaCode.lambda_handler(input,None)
     lInvoke_Status = lInvoke['statusCode']
     print(lInvoke)
     assert lInvoke_Status == expected
-    assert 'Hello' in lInvoke['body']
-
-
-
-
 

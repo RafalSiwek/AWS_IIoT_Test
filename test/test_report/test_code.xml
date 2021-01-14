@@ -1,1 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="0.607" timestamp="2021-01-14T22:07:32.368948" hostname="rsiwek-macwro.local"><testcase classname="test.test_code" name="test_lambda_handler_invoke[input0-200]" time="0.002" /></testsuite></testsuites>
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.835" timestamp="2021-01-14T22:14:28.824663" hostname="rsiwek-macwro.local"><testcase classname="test.test_code" name="test_lambda_handler_invoke[input0-200]" time="0.001"><failure message="pydantic.error_wrappers.ValidationError: 1 validation error for S3Model&#10;Records&#10;  field required (type=value_error.missing)">input = {'body': '"Hello from Lambda!"'}, expected = 200
+
+    @pytest.mark.parametrize("input,expected",[(event3,200)])
+    def test_lambda_handler_invoke(input,expected):
+    
+&gt;       lInvoke = lambdaCode.lambda_handler(input,None)
+
+test/test_code.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.8/site-packages/aws_lambda_powertools/middleware_factory/factory.py:130: in wrapper
+    response = middleware()
+.venv/lib/python3.8/site-packages/aws_lambda_powertools/utilities/parser/parser.py:81: in event_parser
+    parsed_event = parse(event=event, model=model, envelope=envelope)
+.venv/lib/python3.8/site-packages/aws_lambda_powertools/utilities/parser/parser.py:152: in parse
+    return model.parse_obj(event)
+pydantic/main.py:520: in pydantic.main.BaseModel.parse_obj
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+&gt;   ???
+E   pydantic.error_wrappers.ValidationError: 1 validation error for S3Model
+E   Records
+E     field required (type=value_error.missing)
+
+pydantic/main.py:362: ValidationError</failure></testcase></testsuite></testsuites>
