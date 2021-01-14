@@ -12,12 +12,18 @@ phases:
   build:
     commands:
       - echo "Testing..."
-      - python -m pytest test/test_code.py --junitxml=test_report/test_code.xml
+      - python -m pytest test/test_code.py --junitxml=test/test_report/test_code.xml
 
   post_build:
     commands:
       - echo Build completed on `date`
       
+reports:
+  pytest_reports:
+    files:
+      - test_code.xml
+    base-directory: test/test_report/
+    file-format: JUNITXML
 
 artifacts:
   files:
