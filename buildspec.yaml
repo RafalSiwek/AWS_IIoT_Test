@@ -18,6 +18,6 @@ phases:
 
 artifacts:
   files:
-    - "code/*"
+    - "src/*"
   name: "rs-test-code-artifact"
  
