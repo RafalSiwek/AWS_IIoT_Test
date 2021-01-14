@@ -21,12 +21,13 @@ phases:
 reports:
   pytest_reports:
     files:
-      - test_code.xml
-    base-directory: test/test_report/
+      - "test_code.xml"
+    base-directory: "test/test_report"
     file-format: JUNITXML
 
 artifacts:
   files:
     - "src/*"
+    - "test/test_report/*"
   name: "rs-test-code-artifact"
  
