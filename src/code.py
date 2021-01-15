@@ -1,5 +1,5 @@
 import json
-from .eventmodels import S3Model, S3ModelEventBridge
+from .eventmodels import S3Model
 
 from aws_lambda_powertools.utilities.parser import parse, event_parser, ValidationError
 from aws_lambda_powertools.utilities.typing import LambdaContext
