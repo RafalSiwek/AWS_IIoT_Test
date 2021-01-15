@@ -51,4 +51,4 @@ def test_lambda_handler_invoke(input,expected):
   print(lInvoke)
   assert lInvoke_Status == expected
 
-test_lambda_handler_invoke(events.s3EventObjGarbage,200)
+#test_lambda_handler_invoke(events.s3EventObjGarbage,200)
