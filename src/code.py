@@ -5,8 +5,6 @@ from aws_lambda_powertools.utilities.parser import parse, event_parser, Validati
 from aws_lambda_powertools.utilities.typing import LambdaContext
 
 
-#@event_parser(model=S3Model)
-#print(ValidationError)
 def lambda_handler(event, context: LambdaContext) -> None:
     try:
         print("Hello Lambda")
