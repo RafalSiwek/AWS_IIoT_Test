@@ -41,7 +41,10 @@ s3EventPass = {
         }
     ]
 }
+s3EventPassExpectResult = 200
+
 s3EventIntGarbage = 100
+s3EventIntGarbageExpectResult = 400
 
 s3EventObjGarbage = {'body': json.dumps('Hello from Lambda!')}
-    
+s3EventObjGarbageExpectResult = 400
