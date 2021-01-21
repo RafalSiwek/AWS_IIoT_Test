@@ -40,7 +40,7 @@ resource "aws_codebuild_project" "first-build" {
         type = "LINUX_CONTAINER"
     }
     source {
-        type = "CODEPIPELINE"
+        type = "CODECOMMIT"
         buildspec = "src/buildspec.yml"
     }
     tags =merge(
@@ -66,7 +66,7 @@ resource "aws_codebuild_project" "unittest1-codecommit-repository-test" {
         type = "LINUX_CONTAINER"
     }
     source {
-        type = "CODEPIPELINE"
+        type = "CODECOMMIT"
         buildspec = "test/buildspec.yml"
     }
     tags =merge(
