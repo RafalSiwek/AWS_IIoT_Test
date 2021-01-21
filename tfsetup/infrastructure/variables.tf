@@ -24,5 +24,11 @@ variable "repo-name" {
   default = "rs-test-repository"
   
 }
+variable "branch_name" {
+  default = "main"
+  
+}
+
+
 
 
