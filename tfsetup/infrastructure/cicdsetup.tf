@@ -22,8 +22,6 @@ resource "aws_s3_bucket" "build_artifact_bucket" {
     )
 }
 
-
-
 resource "aws_codebuild_project" "first-build" {
 
     name = "${local.resource_prefix}-first-test-build"
