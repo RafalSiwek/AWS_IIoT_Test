@@ -20,9 +20,9 @@ variable "subnet-azs-ips"{
     }
   
 } 
+variable "repo-name" {
+  default = "rs-test-repository"
+  
+}
 
-//{
- // az_a = "170.30.0.0/24"
- // az_b = "170.30.1.0/24"
-//}
 
