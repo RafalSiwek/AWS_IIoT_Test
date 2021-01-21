@@ -125,6 +125,94 @@ resource "aws_route_table_association" "public-az-b-route-association" {
   
 }
 
+resource "aws_security_group" "private-sql-security_grup-test" {
+  name = "${local.resource_prefix}private-sql-security-group"
+  description = "Allow some inbound and outbound traffic for sql connection"
+  vpc_id = aws_vpc.vpc-test.id
+
+  ingress {
+    description = "Allow SQL inbound traffic"
+    from_port = 5432
+    to_port = 5432
+    protocol = "tcp"
+    cidr_blocks = [
+      var.subnet-azs-ips.az-a-private,
+      var.subnet-azs-ips.az-b-private
+    ]
+  }
+  egress {
+    description = "Allow all outbound traffic"
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = [
+      var.subnet-azs-ips.az-a-private,
+      var.subnet-azs-ips.az-b-private
+    ]
+  }
+  tags =merge(
+    local.common_tags,
+    {
+      Name = "${local.resource_prefix}private-sql-security-group"
+    }
+  )
+  
+}
+
+resource "aws_security_group" "public-connection-security_grup-test" {
+  name = "${local.resource_prefix}public-connection-security-group"
+  description = "Allow some inbound and outbound traffic for communicaton connection"
+  vpc_id = aws_vpc.vpc-test.id
+
+  ingress {
+    description = "Allow TLS inbound traffic"
+    from_port = 443
+    to_port = 443
+    protocol = "tcp"
+    cidr_blocks = [
+      var.subnet-azs-ips.az-a-public,
+      var.subnet-azs-ips.az-b-public
+    ]
+  }
+  ingress {
+    description = "Allow http inbound traffic"
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = [
+      var.subnet-azs-ips.az-a-public,
+      var.subnet-azs-ips.az-b-public
+    ]
+  }
+  ingress {
+    description = "Allow ssh inbound traffic"
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = [
+      var.subnet-azs-ips.az-a-public,
+      var.subnet-azs-ips.az-b-public
+    ]
+  }
+  egress {
+    description = "Allow all outbound traffic"
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = [
+      var.subnet-azs-ips.az-a-public,
+      var.subnet-azs-ips.az-b-public
+    ]
+  }
+  tags =merge(
+    local.common_tags,
+    {
+      Name = "${local.resource_prefix}public-connection-security-group"
+    }
+  )
+  
+}
+
 output "vpc-outputs" {
   value = {
     vpc_id = {
@@ -159,5 +247,12 @@ output "vpc-outputs" {
       ARN = aws_route_table.public-route-table
       //Name = aws_route_table.public-route-table.tags.Name
      }
+    private-sql-security_grup-test = {
+      Status = aws_security_group.private-sql-security_grup-test
+    }
+    private-sql-security_grup-test = {
+      Status = aws_security_group.public-connection-security_grup-test
+    }
+
   } 
 }
