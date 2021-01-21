@@ -36,8 +36,9 @@ resource "aws_codebuild_project" "first-build" {
     
     environment {
         compute_type = "BUILD_GENERAL1_SMALL"
-        image = "aws/codebuild/standard:5.0"
+        image = "aws/codebuild/amazonlinux2-x86_64-standard:2.0"
         type = "LINUX_CONTAINER"
+        privileged_mode = "false"
     }
     source {
         type = "CODEPIPELINE"
@@ -62,8 +63,9 @@ resource "aws_codebuild_project" "unittest1-codecommit-repository-test" {
     }
     environment {
         compute_type = "BUILD_GENERAL1_SMALL"
-        image = "aws/codebuild/standard:5.0"
+        image = "aws/codebuild/amazonlinux2-x86_64-standard:2.0"
         type = "LINUX_CONTAINER"
+        privileged_mode = "false"
     }
     source {
         type = "CODEPIPELINE"
@@ -120,7 +122,7 @@ resource "aws_codepipeline" "cicd-management" {
     }
   }
     stage {
-    name = "unittest-buiold"
+    name = "unittest-build"
     action {
       category = "Build"
       name = "First-Test"
