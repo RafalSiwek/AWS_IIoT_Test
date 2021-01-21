@@ -41,7 +41,7 @@ resource "aws_codebuild_project" "first-build" {
     }
     source {
         type = "CODEPIPELINE"
-        buildspec = "code/buildspec.yml"
+        buildspec = "src/buildspec.yml"
     }
     tags =merge(
         local.common_tags,{
