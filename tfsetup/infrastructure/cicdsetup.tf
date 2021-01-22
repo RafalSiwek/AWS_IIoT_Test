@@ -111,7 +111,7 @@ resource "aws_codepipeline" "cicd-management" {
       provider = "CodeBuild"
       version = "1"
       input_artifacts = [ "source" ]
-      output_artifacts = [ "output" ]
+      //output_artifacts = [ "output" ]
 
       configuration = {
         ProjectName = aws_codebuild_project.first-build.name
@@ -127,7 +127,7 @@ resource "aws_codepipeline" "cicd-management" {
       owner = "AWS"
       provider = "CodeBuild"
       version = "1"
-      input_artifacts = [ "output" ]
+      input_artifacts = [ "source" ]
       output_artifacts = [ "package" ]
 
       configuration = {
