@@ -40,7 +40,7 @@ resource "aws_codebuild_project" "first-build" {
     }
     source {
         type = "CODEPIPELINE"
-        buildspec = "src/buildspec.yml"
+        buildspec = "src/buildspec.yaml"
     }
     tags =merge(
         local.common_tags,{
@@ -67,7 +67,7 @@ resource "aws_codebuild_project" "unittest1-codecommit-repository-test" {
     }
     source {
         type = "CODEPIPELINE"
-        buildspec = "test/buildspec.yml"
+        buildspec = "test/unittest1_buildspec.yaml"
     }
     tags =merge(
         local.common_tags,{
