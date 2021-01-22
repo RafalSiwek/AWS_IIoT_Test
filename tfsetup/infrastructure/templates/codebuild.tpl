@@ -27,7 +27,7 @@
     },
     {
       "Effect": "Allow",
-      "Resource": ${codebuild_project_packages},
+      "Resource": "*",
       "Action": [
         "codebuild:*",
         "codebuild:CreateReportGroup",
