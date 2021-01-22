@@ -12,8 +12,9 @@ phases:
 #      - apt-get install -y python3-venv
 #      - python3.6 -m venv test_venv
 #      - . test_venv/bin/activate
+      - ls -la
       - pip install --upgrade pip
-      - pip install -r ../requirements.txt
+#      - pip install -r ../requirements.txt
       - pip install junit-xml
   build:
     commands:
