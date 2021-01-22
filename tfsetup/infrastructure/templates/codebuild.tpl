@@ -3,11 +3,15 @@
   "Statement": [
     {
       "Action": [
-       "s3:PutObject",
-       "s3:GetObject",
-       "s3:GetObjectVersion",
-       "s3:List*",
-       "s3:GetBucketVersioning"
+        "s3:PutObject",
+        "s3:GetObject",
+        "codebuild:CreateReportGroup",
+        "codebuild:CreateReport",
+        "iam:PassRole",
+        "codebuild:UpdateReport",
+        "s3:GetBucketVersioning",
+        "codebuild:BatchPutTestCases",
+        "s3:GetObjectVersion"
       ],
       "Resource": [
         "${artifact_bucket}",
@@ -37,7 +41,10 @@
       "Effect": "Allow",
       "Resource": ${codebuild_project_packages},
       "Action": [
-        "codebuild:*",
+        "codebuild:CreateReportGroup",
+        "codebuild:CreateReport",
+        "codebuild:BatchPutTestCases",
+        "codebuild:UpdateReport",
         "iam:PassRole"
       ] 
     }

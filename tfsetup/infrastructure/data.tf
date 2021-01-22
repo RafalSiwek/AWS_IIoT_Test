@@ -10,7 +10,7 @@ data "template_file" "codebuild_assume_role_policy_template" {
   template = file("${path.module}/templates/codebuild_assume_role.tpl")
 }
 resource "aws_iam_role" "codebuild_role" {
-  name = "${local.resource_prefix}-codebuild-role"
+  name = "${local.resource_prefix}codebuild-role"
   assume_role_policy = data.template_file.codebuild_assume_role_policy_template.rendered
 }
 data "template_file" "codebuild_policy_template" {
@@ -24,7 +24,7 @@ data "template_file" "codebuild_policy_template" {
   }
 }
 resource "aws_iam_role_policy" "codebuild_policy" {
-  name = "${local.resource_prefix}-codebuild-policy"
+  name = "${local.resource_prefix}codebuild-policy"
   role = aws_iam_role.codebuild_role.id
 
   policy = data.template_file.codebuild_policy_template.rendered
@@ -34,7 +34,7 @@ data "template_file" "codepipeline_assume_role_policy_template" {
   template = file("${path.module}/templates/codepipeline_assume_role.tpl")
 }
 resource "aws_iam_role" "codepipeline_role" {
-  name = "${local.resource_prefix}-codepipeline-role"
+  name = "${local.resource_prefix}codepipeline-role"
   assume_role_policy = data.template_file.codepipeline_assume_role_policy_template.rendered
 }
 data "template_file" "codepipeline_policy_template" {
@@ -45,7 +45,7 @@ data "template_file" "codepipeline_policy_template" {
 }
 
 resource "aws_iam_role_policy" "codepipeline_policy" {
-  name = "${local.resource_prefix}-codepipeline-policy"
+  name = "${local.resource_prefix}codepipeline-policy"
   role = aws_iam_role.codepipeline_role.id
 
   policy = data.template_file.codepipeline_policy_template.rendered
