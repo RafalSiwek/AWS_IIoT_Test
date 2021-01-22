@@ -5,12 +5,7 @@
       "Action": [
         "s3:PutObject",
         "s3:GetObject",
-        "codebuild:CreateReportGroup",
-        "codebuild:CreateReport",
-        "iam:PassRole",
-        "codebuild:UpdateReport",
         "s3:GetBucketVersioning",
-        "codebuild:BatchPutTestCases",
         "s3:GetObjectVersion"
       ],
       "Resource": [
@@ -18,13 +13,6 @@
         "${artifact_bucket}/*"
       ],
       "Effect": "Allow"
-    },
-    {
-      "Effect": "Allow",
-      "Resource": ${codebuild_project_packages},
-      "Action": [
-        "codebuild:*"
-      ]
     },
     {
       "Effect": "Allow",
@@ -41,12 +29,22 @@
       "Effect": "Allow",
       "Resource": ${codebuild_project_packages},
       "Action": [
+        "codebuild:*",
         "codebuild:CreateReportGroup",
         "codebuild:CreateReport",
         "codebuild:BatchPutTestCases",
-        "codebuild:UpdateReport",
-        "iam:PassRole"
+        "codebuild:UpdateReport"
+        
       ] 
+    },
+    {
+      "Effect": "Allow",
+      "Resource": [
+        "*"
+      ],
+      "Action": [
+        "iam:PassRole"
+      ]
     }
   ]
 }
