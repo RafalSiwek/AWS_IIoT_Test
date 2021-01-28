@@ -35,6 +35,6 @@ reports:
 artifacts:
   files:
     - "src/*"
-    - "test/test_report/*"
+#    - "test/test_report/*"
   name: "rs-test-code-artifact"
  
