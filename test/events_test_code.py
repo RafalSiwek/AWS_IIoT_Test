@@ -1,8 +1,6 @@
 import json
 
 
-    
-
 s3EventPass = {
     "Records": [
        {
