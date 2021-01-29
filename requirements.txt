@@ -16,6 +16,8 @@ jsonpickle==1.4.2
 junit-xml==1.9
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
+mypy==0.800
+mypy-extensions==0.4.3
 packaging==20.8
 paho-mqtt==1.5.1
 pluggy==0.13.1
@@ -34,6 +36,7 @@ s3transfer==0.3.4
 six==1.15.0
 snowballstemmer==2.0.0
 toml==0.10.2
+typed-ast==1.4.2
 typing-extensions==3.7.4.3
 urllib3==1.26.2
 wrapt==1.12.1
